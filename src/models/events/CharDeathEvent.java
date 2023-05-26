@@ -1,3 +1,10 @@
+/**
+* CharDeathEvent.java
+*
+* this event handles the death of a card on the game board. The surviving card's data is acquired using the pointer Killer,
+* and the card to be sent to the graveyard after death is acquired using the pointer Character.
+**/ 
+
 package models.events;
 
 import models.enums.Pointers;
