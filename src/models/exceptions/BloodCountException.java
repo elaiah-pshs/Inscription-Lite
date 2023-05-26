@@ -1,3 +1,9 @@
+/**
+*
+* @throws BloodCountException < when a player's blood count is less than the summon cost of a card being summoned. >
+*
+**/
+
 package models.exceptions;
 
 public class BloodCountException extends Exception {
