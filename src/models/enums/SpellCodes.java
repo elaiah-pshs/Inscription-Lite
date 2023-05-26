@@ -1,3 +1,9 @@
+/**
+* SpellCodes.java
+*
+* this is an unfinished class that was left unimplimented in the project.
+**/ 
+
 package models.enums;
 
 public enum SpellCodes {
