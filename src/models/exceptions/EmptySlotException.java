@@ -1,3 +1,9 @@
+/**
+*
+* @throws EmptySlotException < when a sigil effect is applied to a position on the board with no card in it >
+*
+**/
+
 package models.exceptions;
 
 public class EmptySlotException extends Exception {
