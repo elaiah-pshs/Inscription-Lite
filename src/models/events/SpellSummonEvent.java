@@ -1,3 +1,9 @@
+/**
+* SpellSummonEvent.java
+*
+* this method is unused in our project. it is an unfinished method.
+**/
+
 package models.events;
 
 import models.enums.Pointers;
