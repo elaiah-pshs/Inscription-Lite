@@ -1,3 +1,8 @@
+/**
+*
+* @throws DeadEntityException < a card at a certain location on the board has died >
+*
+**/
 package models.exceptions;
 
 import models.enums.Pointers;
