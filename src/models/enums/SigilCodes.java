@@ -1,5 +1,7 @@
 /*
  * SigilCodes.java
+ *
+ * this declares the names of all the sigils that may be used in-game.
  */
 
 package models.enums;
