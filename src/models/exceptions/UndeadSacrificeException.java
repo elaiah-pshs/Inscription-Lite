@@ -1,3 +1,9 @@
+/**
+*
+* @throws UndeadSacrificeException < when an undead character tries to get sacrificed >
+*
+**/
+
 package models.exceptions;
 
 public class UndeadSacrificeException extends Exception {
