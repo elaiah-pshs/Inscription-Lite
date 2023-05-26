@@ -1,3 +1,8 @@
+/**
+*
+* @throws DeadAvatarException < is thrown when either players die. >
+*
+**/
 package models.exceptions;
 
 public class DeadAvatarException extends Exception {
