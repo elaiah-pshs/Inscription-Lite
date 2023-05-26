@@ -1,3 +1,8 @@
+/**
+*
+* @throws DeadCharacterException < once a card's character has died. >
+*
+**/
 package models.exceptions;
 
 public class DeadCharacterException extends Exception {
