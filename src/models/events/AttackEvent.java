@@ -1,3 +1,10 @@
+/**
+* AttackEvent.java
+*
+* This event takes the attack value of attacking entity at Pointer S, and the health of the defending 
+* entity at Pointer T, and subtracts from that health by an integer D. 
+**/
+
 package models.events;
 
 import models.enums.Pointers;
