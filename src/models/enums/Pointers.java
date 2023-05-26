@@ -1,3 +1,15 @@
+/**
+* Pointers.java
+*
+* declares addresses for different points for 
+* P = active player, and O = inactive player
+* A = avatar 
+* D = deck 
+* H = hand
+* 1-4 = playing slots on the board
+* G= graveyard
+**/
+
 package models.enums;
 
 public enum Pointers {
