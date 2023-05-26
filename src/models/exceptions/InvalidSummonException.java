@@ -1,3 +1,9 @@
+/**
+*
+* @throws  InvalidSummonException < when a summoned sigil does not affect its target >
+*
+**/
+
 package models.exceptions;
 
 public class InvalidSummonException extends Exception {
