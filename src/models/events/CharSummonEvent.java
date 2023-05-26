@@ -1,3 +1,12 @@
+/**
+* CharSummonEvent.java
+*
+* this event handles the summoning of a character card onto the game board. the pointer Target obtains the location on the board.
+* the card subtracts the blood cost from the active player's blood count using blood_change, which is obtained through the active player
+* pointer, (PA) and the cost of the card, which is subtracted from the PA blood count. The card is then rendered onto the board using the
+* string of its filepath, under the variable card_image.
+**/
+
 package models.events;
 
 import models.enums.Pointers;
