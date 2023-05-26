@@ -1,3 +1,9 @@
+/**
+*
+* @throws ZeroHealthExcepttion < when the target of an attack already has zero health >
+*
+**/
+
 package models.exceptions;
 
 public class ZeroHealthException extends Exception {
