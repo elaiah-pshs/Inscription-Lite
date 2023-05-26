@@ -27,7 +27,7 @@ import models.exceptions.MultipleDrawException;
 import models.exceptions.PointerConversionException;
 import models.exceptions.UndeadSacrificeException;
 
-/*
+/**
  * <code>Avatar</code> represents a player in a game. All actions a player can do are defined here: drawing, playing, discarding, etc.
  */
 public class Avatar implements Entity {
@@ -209,7 +209,7 @@ public class Avatar implements Entity {
     /**
      * Returns the character in a slot in the board that belongs to this avatar.
      * 
-     * @params column       the index of the slot of interest, with 0 being leftmost slot and 3 being rightmost slot.
+     * @param column        the index of the slot of interest, with 0 being leftmost slot and 3 being rightmost slot.
      * @return              the <code>Character</code> in index <code>column</code> of <code>slots</code>.
      */
     public Character getCharInSlot(int column) {

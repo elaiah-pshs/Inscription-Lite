@@ -1,6 +1,6 @@
 package models;
 
-/*
+/**
  * <code>Card</code> represents a card that an avatar can play. All attributes common among all types of cards are declared here.
  */
 
@@ -24,6 +24,10 @@ public abstract class Card {
 
     /** 
      * Creates a new card with a name, image, and summoning cost.
+     * 
+     * @param n             the name of this character.
+     * @param i             the path to the image representing this character.
+     * @param c             the summoning cost of this character.
      */
     public Card(String n, String i, int c) {
         this.name = n;

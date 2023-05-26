@@ -10,8 +10,9 @@ import models.exceptions.DeadCharacterException;
 import models.exceptions.PointerConversionException;
 import models.exceptions.ZeroHealthException;
 
-/*
- * <code>Entity</code> represents a component of the game that has health, can take damage, and can be affected by sigils. */
+/**
+ * <code>Entity</code> represents a component of the game that has health, can take damage, and can be affected by sigils.
+ */
 
 public interface Entity {
     public int getHealth();

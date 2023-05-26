@@ -11,21 +11,47 @@ import models.Session;
 import models.enums.Locations;
 import models.processors.LocationProcessor;
 
+/**
+ * <code>BoardEngine</code> contains functions to render and update the board.
+ */
 public class BoardEngine {
-    Session session = App.getSession();
+    /** 
+     * The session this engine acts in.
+     */
+    private Session session = App.getSession();
+    /** 
+     * The avatar in the home side of the game.
+     */
     private Avatar home = session.getHome();
+    /** 
+     * The avatar in the away side of the game.
+     */
     private Avatar away = session.getAway();
-    LocationProcessor location_processor;
+    /** 
+     * The location processor of the game.
+     */
+    private LocationProcessor location_processor;
 
+    /** 
+     * Creates a new <code>BoardEngine</code> instance that utilizes the application's location processor.
+     * 
+     * @param l             the applicaton's location processor.
+     */
     public BoardEngine(LocationProcessor l) {
         this.location_processor = l;
     }
     
+    /** 
+     * Sets the location property of each component in the board.
+     */
     public void setProperties() {
         for (Locations l : Locations.values())
             location_processor.toNode(l).getProperties().put("location", l);
     }
 
+    /** 
+     * Disables certain elements on the board based on which side is playing.
+     */
     public void setDisables() {
         if (session.getPlayingSide() == 'h') {
             location_processor.toNode(Locations.HD).setDisable(false);
@@ -49,7 +75,9 @@ public class BoardEngine {
 
     
     /** 
-     * @param updated_avatar
+     * Updates the deck count of an avatar.
+     * 
+     * @param updated_avatar    a character referencing the avatar whose deck changed.
      */
     public void updateDeckCount(char updated_avatar) {
         if (updated_avatar == 'h') {
@@ -64,6 +92,11 @@ public class BoardEngine {
         }
     }
 
+    /** 
+     * Updates the discard pile count of an avatar.
+     * 
+     * @param updated_avatar    a character referencing the avatar whose discard pile changed.
+     */
     public void updateGraveyardCount(char updated_avatar) {
         if (updated_avatar == 'h') {
             VBox avatar = (VBox)this.location_processor.toNode(2, 0);
@@ -77,6 +110,11 @@ public class BoardEngine {
         }
     }
 
+    /** 
+     * Updates the health count of an avatar.
+     * 
+     * @param updated_avatar    a character referencing the avatar whose health changed.
+     */
     public void updateAvatarHealth(char updated_avatar) {
         if (updated_avatar == 'h') {
             HBox avatar = (HBox)this.location_processor.toNode(3, 1);
@@ -94,6 +132,11 @@ public class BoardEngine {
         }
     }
 
+    /** 
+     * Updates the blood count count of an avatar.
+     * 
+     * @param updated_avatar    a character referencing the avatar whose blood count changed.
+     */
     public void updateAvatarBlood(char updated_avatar) {
         if (updated_avatar == 'h') {
             HBox avatar = (HBox)this.location_processor.toNode(3, 1);
@@ -111,6 +154,9 @@ public class BoardEngine {
         }
     }
 
+    /** 
+     * Updates all changing quantities in the game UI.
+     */
     public void updateCounts() {
         StackPane turn_number_parent = (StackPane)this.location_processor.toNode(0, 5);
         Text turn_number = (Text)turn_number_parent.getChildren().get(1);

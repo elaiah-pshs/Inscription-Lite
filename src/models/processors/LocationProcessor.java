@@ -10,17 +10,29 @@ import models.App;
 import models.enums.Locations;
 import models.enums.Pointers;
 
+/**
+ * <code>LocationProcessor</code> contains functions to process locations.
+ */
 public class LocationProcessor {
+    /** 
+     * References the grid in which the game is being played.
+     */
     private GridPane grid;
-
+    
+    /** 
+     * Creates a new location processor based on the game grid.
+     * 
+     * @param g             the <code>GridPane</code> containing the game board.
+     */
     public LocationProcessor(GridPane g) {
         this.grid = g;
     }
 
-    
     /** 
-     * @param n
-     * @return int
+     * Returns the row where a certain <code>Node</code> is.
+     * 
+     * @param n             the <code>Node</code> of interest.
+     * @return              the row where <code>g</code> is
      */
     public int getNodeRow(Node n) {
         try {
@@ -31,6 +43,12 @@ public class LocationProcessor {
         }
     }
 
+    /** 
+     * Returns the column where a certain <code>Node</code> is.
+     * 
+     * @param n             the <code>Node</code> of interest.
+     * @return              the column where <code>g</code> is
+     */
     public int getNodeCol(Node n) {
         try {
             return GridPane.getColumnIndex(n);
@@ -40,6 +58,13 @@ public class LocationProcessor {
         }
     }
 
+    /** 
+     * Returns the <code>Node</code> at a certain location in the grid.
+     * 
+     * @param row           the column of the <code>Node</code> to be obtained.
+     * @param col           the column of the <code>Node</code> to be obtained.
+     * @return              the <code>Node</code> at row <code>row</code> and column <code>col</code>.
+     */
     public Node toNode(int row, int col) {
         Node result = null;
 
@@ -53,6 +78,12 @@ public class LocationProcessor {
         return result;
     }
 
+    /** 
+     * Returns the <code>Node</code> at a certain location in the grid.
+     * 
+     * @param l             the location of the <code>Node</code> to be obtained.
+     * @return              the <code>Node</code> at location <code>l</code>.
+     */
     public Node toNode(Locations l) {
         Node result = null;
 
@@ -110,6 +141,12 @@ public class LocationProcessor {
         return result;
     }
 
+    /** 
+     * Converts a location to a pointer.
+     * 
+     * @param l             the location to be converted.
+     * @return              the <code>Pointer</code> equivalent to <code>l</code>.
+     */
     public Pointers toPointer(Locations l) {
         String location = l.name().toLowerCase();
 

@@ -16,7 +16,7 @@ import models.exceptions.DeadCharacterException;
 import models.exceptions.PointerConversionException;
 import models.exceptions.ZeroHealthException;
 
-/*
+/**
  * <code>Character</code> represents a character a player can place on the board in their avatar's slots.
  */
 

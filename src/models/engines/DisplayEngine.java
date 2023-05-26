@@ -13,32 +13,64 @@ import javafx.scene.text.Text;
 import models.App;
 import models.processors.LocationProcessor;
 
+/**
+ * <code>DisplayEngine</code> contains functions that control highlighting, error displays, and screen switching.
+ */
 public class DisplayEngine {
-    private LocationProcessor location_processor;
+    /** 
+    * The location processor of the game.
+    */
+   private LocationProcessor location_processor;
 
+    /** 
+    * The application window.
+    */
     private Stage stage;
+    /** 
+    * The currently displayed screen.
+    */
     private Scene scene;
+    /** 
+    * The root (highest) component in the currently displayed screen.
+    */
     private Parent root;
     
+    /** 
+    * References the hihglighted <code>Node</code>.
+    */
     private Node highlighted;
+    /** 
+    * References the spot where the error text for the home side goes.
+    */
     private Text home_error;
+    /** 
+    * References the spot where the error text for the away side goes.
+    */
     private Text away_error;
 
+    /** 
+     * Creates a new <code>DisplayEngine</code> instance that utilizes the application's location processor.
+     * 
+     * @param l             the applicaton's location processor.
+     */
     public DisplayEngine(LocationProcessor l) {
         this.location_processor = l;
         this.home_error = (Text)this.location_processor.toNode(3, 0);
         this.away_error = (Text)this.location_processor.toNode(0, 0);
     }
 
+    /** 
+     * Creates a new <code>DisplayEngine</code> instance.
+     */
     public DisplayEngine() {
         ;
     }
 
-    
     /** 
-     * @param path
-     * @param trigger
-     * @throws IOException
+     * Switches to a new screen.
+     * 
+     * @param path          the path to the FXML file representing the screen to go to.
+     * @param trigger       the <code>MouseEvent</code> that triggered the switch screen action.
      */
     public void switchScreen(String path, MouseEvent trigger) throws IOException {
         root = FXMLLoader.load(getClass().getResource("../../views/" + path));
@@ -48,6 +80,13 @@ public class DisplayEngine {
         stage.show();
     }
 
+    /** 
+     * Switches to a new screen with a custom controller that has to be initialized.
+     * 
+     * @param path          the path to the FXML file representing the screen to go to.
+     * @param trigger       the <code>MouseEvent</code> that triggered the switch screen action.
+     * @param controller    an object representing the controller of the screen.
+     */
     public void switchScreen(String path, MouseEvent trigger, Object controller) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../../views/" + path));
         fxmlLoader.setController(controller);
@@ -58,15 +97,30 @@ public class DisplayEngine {
         stage.show();
     }
 
+    /** 
+     * Returns the highlighted node.
+     * 
+     * @return              the value of <code>highlighted</code>.
+     */
     public Node getHighlighted() {
         return this.highlighted;
     }
     
+    /** 
+     * Highlights a node.
+     * 
+     * @param n             the <code>Node</code> to highlight.
+     */
     public void highlight(Node n) {
         this.highlighted = n;
         this.highlighted.getStyleClass().add("pane");
     }
 
+    /** 
+     * Removes the highlight from a node.
+     * 
+     * @param n             the <code>Node</code> to unhighlight.
+     */
     public void unhighlight() {
         try {
             this.highlighted.getStyleClass().remove("pane");
@@ -77,6 +131,11 @@ public class DisplayEngine {
         }
     }
 
+    /** 
+     * Displays an error on the game UI.
+     * 
+     * @param e             the <code>Exception</code> to be displayed.
+     */
     public void displayError(Exception e) {
         if (highlighted != null)
             unhighlight();
@@ -91,6 +150,12 @@ public class DisplayEngine {
         }
     }
 
+    /** 
+     * Displays an error on the game UI.
+     * 
+     * @param e             the <code>Exception</code> to be displayed.
+     * @param side          the side (home or away) which caused the error.
+     */
     public void displayError(Exception e, char side) {
         if (highlighted != null)
             unhighlight();
@@ -105,6 +170,9 @@ public class DisplayEngine {
         }
     }
 
+    /** 
+     * Removes all errors displayed on the game UI.
+     */
     public void removeErrors() {
         try {
             if (!home_error.getText().isEmpty())

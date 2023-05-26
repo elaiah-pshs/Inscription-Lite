@@ -1,6 +1,6 @@
 package models;
 
-/*
+/**
  * <code>App</code> represents the running instance of this application. Currently, it only contains a static <code>Session</code> object.
  */
 public class App {

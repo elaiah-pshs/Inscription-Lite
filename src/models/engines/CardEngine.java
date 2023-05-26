@@ -14,21 +14,41 @@ import models.Session;
 import models.enums.Locations;
 import models.processors.LocationProcessor;
 
+/**
+ * <code>CardEngine</code> contains functions to render and update the cards used in a game.
+ */
 public class CardEngine {
+    /** 
+     * The session this engine acts in.
+     */
     private Session session = App.getSession();
+    /** 
+     * The avatar in the home side of the game.
+     */
     private Avatar home = session.getHome();
+    /** 
+     * The avatar in the away side of the game.
+     */
     private Avatar away = session.getAway();
-    
-    LocationProcessor location_processor;
-    
+    /** 
+     * The location processor of the game.
+     */
+    private LocationProcessor location_processor;
+
+    /** 
+     * Creates a new <code>CardEngine</code> instance that utilizes the application's location processor.
+     * 
+     * @param l             the applicaton's location processor.
+     */
     public CardEngine(LocationProcessor l) {
         this.location_processor = l;
     }
     
-    
     /** 
-     * @param c
-     * @return StackPane
+     * Creates a new card that can be displayed in the game UI.
+     * 
+     * @param c             the <code>Card</code> object to create a UI out of.
+     * @return              a <code>StackPane</code> representing the displayable card.
      */
     public StackPane createCard(Card c) {
         File file = new File("src/static/images/backing.png");
@@ -47,6 +67,13 @@ public class CardEngine {
         return wrapper;
     }
 
+    /** 
+     * Renders a <code>Card</code> at a certain slot on the board.
+     * 
+     * @param c             the <code>Card</code> to render.
+     * @param l             the location where this card shall be rendered.
+     * @return              a <code>StackPane</code> representing the displayable card.
+     */
     public StackPane renderCard(Card c, Locations l) {
         StackPane card = createCard(c);
 
@@ -87,6 +114,9 @@ public class CardEngine {
         return card;
     }
 
+    /** 
+     * Renders all cards in both avatars' hand.
+     */
     public void renderHands() {
         home.getHand().forEach((Card c) -> {
             try {
@@ -107,6 +137,9 @@ public class CardEngine {
         });
     }
 
+    /** 
+     * Renders all characters in both avatars' slots.
+     */
     public void renderSlots() {
         for (int i = 0; i < 4; i++) {
             try {

@@ -23,16 +23,52 @@ import models.processors.LocationProcessor;
 
 import models.exceptions.WrongSlotException;
 
+/**
+ * <code>ActionEngine</code> contains wrapper functions for <code>Avatar.draw()</code>, <code>Avatar.summon()</code>, and <code>Avatar.sacrifice()</code> that update the UI according to these three functions.
+ */
 public class ActionEngine {
+    /** 
+     * The session this engine acts in.
+     */
     private Session session = App.getSession();
+    /** 
+     * The avatar in the home side of the game.
+     */
     private Avatar home = session.getHome();
+    /** 
+     * The avatar in the away side of the game.
+     */
     private Avatar away = session.getAway();
+    /** 
+     * The location processor of the game.
+     */
     private LocationProcessor location_processor;
+    /** 
+     * The board engine of the game.
+     */
     private BoardEngine board_engine;
+    /** 
+     * The card engine of the game.
+     */
     private CardEngine card_engine;
+    /** 
+     * The display engine of the game.
+     */
     private DisplayEngine display_engine;
+    /** 
+     * The event handler assigned to every card created in the game UI.
+     */
     private EventHandler<MouseEvent> event_handler;
-
+    
+    /** 
+     * Creates a new <code>ActionEngine</code> instance that utilizes the application's location processor, board engine, card engine, and display engine.
+     * 
+     * @param l             the applicaton's location processor.
+     * @param b             the applicaton's board engine.
+     * @param c             the applicaton's card engine.
+     * @param v             the applicaton's display engine.
+     * @param e             the event handler to be assigned to every card created in the game UI.
+     */
     public ActionEngine(LocationProcessor l, BoardEngine b, CardEngine c, DisplayEngine d, EventHandler<MouseEvent> e) {
         location_processor = l;
         board_engine = b;
@@ -41,10 +77,11 @@ public class ActionEngine {
         event_handler = e;
     }
 
-    
     /** 
-     * @param event
-     * @return boolean
+     * Determines whether the a <code>MouseEvent</code> is equivalent to a player drawing a card.
+     * 
+     * @param event         the <code>MouseEvent</code> to evaluate.
+     * @return              <code>true</code> if the <code>MouseEvent</code> is equivalent to a player drawing a card; <code>false</code> otherwise.
      */
     public boolean isDraw(MouseEvent event) {
         Node source = (Node)event.getSource();
@@ -53,6 +90,11 @@ public class ActionEngine {
         return source_is_deck && double_clicked;
     }
 
+    /** 
+     * Draws a card for the playing avatar, then displays this event in the UI.
+     * 
+     * @param event         the <code>MouseEvent</code> representing the player drawing a card.
+     */
     public void draw(MouseEvent event) {
         try {
             display_engine.unhighlight();
@@ -71,10 +113,23 @@ public class ActionEngine {
         }
     }
 
+    /** 
+     * Determines whether the a <code>Node</code> has a certain style class.
+     * 
+     * @param element       the <code>Node</code> to evaluate.
+     * @param property      the style class to check for.
+     * @return              <code>true</code> if the <code>element</code> has the style class in question; <code>false</code> otherwise.
+     */
     public boolean nodeHasClass(Node element, String property) {
         return element.getStyleClass().contains(property);
     }
 
+    /** 
+     * Determines whether the a <code>MouseEvent</code> is equivalent to a player summoning a card.
+     * 
+     * @param event         the <code>MouseEvent</code> to evaluate.
+     * @return              <code>true</code> if the <code>MouseEvent</code> is equivalent to a player summoning a card; <code>false</code> otherwise.
+     */
     public boolean isSummon(MouseEvent event) {
         Node source = (Node)event.getSource();
         Node highlighted = display_engine.getHighlighted();
@@ -90,6 +145,11 @@ public class ActionEngine {
         return valid_1 || valid_2;
     }
 
+    /** 
+     * Summons a card for the playing avatar, then displays this event in the UI.
+     * 
+     * @param event         the <code>MouseEvent</code> representing the player summoning a card.
+     */
     public void summon(MouseEvent event, Node source, Node highlighted) {
         Node card, slot;
 
@@ -141,6 +201,12 @@ public class ActionEngine {
         }
     }
 
+    /** 
+     * Determines whether the a <code>MouseEvent</code> is equivalent to a player sacrificing a character.
+     * 
+     * @param event         the <code>MouseEvent</code> to evaluate.
+     * @return              <code>true</code> if the <code>MouseEvent</code> is equivalent to a player sacrificing a character; <code>false</code> otherwise..
+     */
     public boolean isSacrifice(MouseEvent event) {
         Node source = (Node)event.getSource();
         Node highlighted = display_engine.getHighlighted();
@@ -156,6 +222,11 @@ public class ActionEngine {
         return valid_1 || valid_2;
     }
 
+    /** 
+     * Sacrifices a character for the playing avatar, then displays this event in the UI.
+     * 
+     * @param event         the <code>MouseEvent</code> representing the player sacrificng a character.
+     */
     public void sacrifice(MouseEvent event, Node source, Node highlighted) {
         StackPane slot;
 

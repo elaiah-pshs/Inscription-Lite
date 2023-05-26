@@ -4,7 +4,7 @@ import models.patterns.SpellEffect;
 import models.enums.Pointers;
 import models.processors.SpellProcessor;
 
-/*
+/**
  * <code>Spell</code> represents a spell a player can cast onto the entities in the game.
  * 
  * <strong>Note: this class is still in development and is not completed! It was excluded from the first release of this project as our group determined that we do not have enough time to complete this class and its functions.</strong>

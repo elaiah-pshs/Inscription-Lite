@@ -13,11 +13,15 @@ import models.Card;
 import models.Character;
 import models.Spell;
 
+/**
+ * <code>CardDataProcessor</code> contains functions to process data from the CSV files listing card information.
+ */
 public class CardDataProcessor {
-    
+
     /** 
-     * @param csv
-     * @return Stack<Card>
+     * Returns a shuffled array of cards as read from a CSV file.
+     * 
+     * @param csv           the CSV file to read card information from.
      */
     public static Stack<Card> read(File csv) {
         Stack<Card> out = new Stack<Card>();

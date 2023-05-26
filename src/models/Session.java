@@ -10,7 +10,7 @@ import models.exceptions.DeadAvatarException;
 import models.exceptions.DeadCharacterException;
 import models.exceptions.PointerConversionException;
 
-/*
+/**
  * <code>Session</code> represents a game being played in the application. It dictates the general flow of a game by initializing the avatars, logging the players' moves, and facilitating the transfer of turns from one player to another.
  * 
  * A game consists of two avatars: one in the home side (the bottom of the screen) representing player 1, and one in the away side (the top of the screen) representing player 2. At a given point in time, one of these players will be playing and the other will not be playing (observing). A turn is counted when both the home and away sides have played already, in that order.
