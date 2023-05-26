@@ -66,7 +66,7 @@ public class ActionEngine {
      * @param l             the applicaton's location processor.
      * @param b             the applicaton's board engine.
      * @param c             the applicaton's card engine.
-     * @param v             the applicaton's display engine.
+     * @param d             the applicaton's display engine.
      * @param e             the event handler to be assigned to every card created in the game UI.
      */
     public ActionEngine(LocationProcessor l, BoardEngine b, CardEngine c, DisplayEngine d, EventHandler<MouseEvent> e) {
@@ -149,6 +149,8 @@ public class ActionEngine {
      * Summons a card for the playing avatar, then displays this event in the UI.
      * 
      * @param event         the <code>MouseEvent</code> representing the player summoning a card.
+     * @param source        the <code>Node</code> that triggered the event.
+     * @param highlighted   the <code>Node</code> that is currently highlighted.
      */
     public void summon(MouseEvent event, Node source, Node highlighted) {
         Node card, slot;
@@ -226,6 +228,8 @@ public class ActionEngine {
      * Sacrifices a character for the playing avatar, then displays this event in the UI.
      * 
      * @param event         the <code>MouseEvent</code> representing the player sacrificng a character.
+     * @param source        the <code>Node</code> that triggered the event.
+     * @param highlighted   the <code>Node</code> that is currently highlighted.
      */
     public void sacrifice(MouseEvent event, Node source, Node highlighted) {
         StackPane slot;

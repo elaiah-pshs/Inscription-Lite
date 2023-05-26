@@ -118,8 +118,6 @@ public class DisplayEngine {
 
     /** 
      * Removes the highlight from a node.
-     * 
-     * @param n             the <code>Node</code> to unhighlight.
      */
     public void unhighlight() {
         try {
