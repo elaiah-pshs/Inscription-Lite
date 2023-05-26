@@ -1,3 +1,10 @@
+/**
+* SacrificeEvent.java
+*
+* this event handles the sacrifice of a card, by using a pointer to acquire the location of a card, and then 
+* the pointer PG (active player's graveyard) is edited.
+**/
+
 package models.events;
 
 import models.patterns.Event;
